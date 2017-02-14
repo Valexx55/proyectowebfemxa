@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Context docBase="WebMicroForum" path="/WebMicroForum" reloadable="true">
+<Context docBase="proyectowebvaleriano" path="/proyectowebvaleriano" reloadable="true">
 <Resource 
 	name="jdbc/pool" 
 	auth="Container" 
 	type="javax.sql.DataSource"  
-	username="HR" 
-	password="password" 
-	driverClassName="oracle.jdbc.driver.OracleDriver"  
-	url="jdbc:oracle:thin:@localhost:1521:xe" 
+	username="adminGXjlxzG" 
+	password="QBShkFDW_69e" 
+	driverClassName="com.mysql.cj.jdbc.Driver"  
+	url="jdbc:mysql://localhost:3307/femxa" 
 	maxActive="8" 
 	maxIdle="8"/> 
 </Context>
