@@ -36,13 +36,13 @@ public class BuscarPatologia extends HttpServlet {
 		int id = Integer.parseInt(str_id);
 		
 		long tinicial = System.currentTimeMillis();
-		PatologiaDTO patoDto = ps.buscarPatologiaPorId(id);
+		PatologiaDTO patoDto = ps.buscarPatologiaPorId(4);
 		long tfinal = System.currentTimeMillis();
 		long ttotal = tfinal-tinicial;
 		System.out.println("Tardó = " + ttotal +" ms");
 		
 		request.setAttribute("patologia", patoDto);
-		request.getRequestDispatcher("salida.jsp").forward(request, response);
+		request.getRequestDispatcher(".//html//catarata.jsp").forward(request, response);
 	}
 
 	/**

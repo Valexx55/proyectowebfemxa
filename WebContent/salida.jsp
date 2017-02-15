@@ -10,6 +10,8 @@
 ${patologia.nombre}<br>
 ${patologia.causa}<br>
 ${patologia.tratamiento}<br>
+SINTOMAS
+${patologia.lista_sintomas[0].descripcion}<br>
 
 
 </body>
