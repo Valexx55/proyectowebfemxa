@@ -30,9 +30,18 @@ public class BuscarPatologia extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PatologiaService ps = new PatologiaService(); 
-		PatologiaDTO patoDto = ps.buscarPatologiaPorId(1);
-		request.setAttribute("pato", patoDto);
+		PatologiaService ps = new PatologiaService();
+		
+		String str_id = request.getParameter("id");
+		int id = Integer.parseInt(str_id);
+		
+		long tinicial = System.currentTimeMillis();
+		PatologiaDTO patoDto = ps.buscarPatologiaPorId(id);
+		long tfinal = System.currentTimeMillis();
+		long ttotal = tfinal-tinicial;
+		System.out.println("Tardó = " + ttotal +" ms");
+		
+		request.setAttribute("patologia", patoDto);
 		request.getRequestDispatcher("salida.jsp").forward(request, response);
 	}
 

@@ -7,6 +7,10 @@
 <title>SALIDA</title>
 </head>
 <body>
-${pato.nombre}
+${patologia.nombre}<br>
+${patologia.causa}<br>
+${patologia.tratamiento}<br>
+
+
 </body>
 </html>
