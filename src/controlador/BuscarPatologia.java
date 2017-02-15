@@ -1,4 +1,4 @@
-
+package controlador;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proyectoweb.PatologiaService;
+import dto.PatologiaDTO;
+import servicios.PatologiaService;
 
 /**
  * Servlet implementation class BuscarPatologia
@@ -29,17 +30,10 @@ public class BuscarPatologia extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
-		
-		int idn = Integer.parseInt(id);
-		/**
-		 * HAY 10 DE TIPOS DE PERSONAS
-		 * UNAS SABEN BINARIO Y OTRAS NO
-		 */
-		PatologiaService ps = new PatologiaService();
-		ps.buscarPatologiaPorID(idn);
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PatologiaService ps = new PatologiaService(); 
+		PatologiaDTO patoDto = ps.buscarPatologiaPorId(1);
+		request.setAttribute("pato", patoDto);
+		request.getRequestDispatcher("salida.jsp").forward(request, response);
 	}
 
 	/**

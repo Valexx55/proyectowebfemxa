@@ -46,7 +46,7 @@ public class Pool {
 	
 	
 	
-	public static Connection getConnection ()
+	public Connection getConnection ()
 	{
 		Connection conexion = null;
 		try
@@ -60,7 +60,7 @@ public class Pool {
 		return conexion;
 	}
 	
-	public static void liberarRecursos (Connection conexion, Statement st, ResultSet rs)
+	public void liberarRecursos (Connection conexion, Statement st, ResultSet rs)
 	{
 		
 			
