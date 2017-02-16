@@ -1,10 +1,17 @@
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.eclipse.jdt.internal.compiler.batch.Main;
+
+import dao.PatologiaDAO;
+import dto.PatologiaDTO;
+import dto.MapaPatologias;
 
 /**
  * Application Lifecycle Listener implementation class EscuchaInicioYFin
@@ -45,6 +52,16 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	try {
 			MainSSH.conectate_A_SSH();
 			System.out.println("La conexión SSH queda iniciada");
+			
+			
+			PatologiaDAO patologiaDAO = new PatologiaDAO();
+			Map<Integer, PatologiaDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
+			
+			MapaPatologias mapaPatologias = new MapaPatologias();
+			mapaPatologias.setMapapatologia(mapa_patDto);
+			
+			System.out.println("Mapa Inicializado");
+			
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

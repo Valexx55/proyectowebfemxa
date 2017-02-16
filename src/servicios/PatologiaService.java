@@ -1,18 +1,29 @@
 package servicios;
 
 import dao.PatologiaDAO;
+import dto.MapaPatologias;
 import dto.PatologiaDTO;
+
 
 public class PatologiaService {
 	
 	public PatologiaDTO buscarPatologiaPorId (int id)
 	{
+		
 		PatologiaDTO patoDTO = null;
 		
-			PatologiaDAO pdao = new PatologiaDAO();
+		//VERSIÓN 1 .- Accediendo a la base de datos cada vez
+			/*PatologiaDAO pdao = new PatologiaDAO();
 			patoDTO = pdao.buscarPorId(id);
 		
-			System.out.println(patoDTO.toString());
+			System.out.println(patoDTO.toString());*/
+		//FIN VERSIÓN 1 .- Accediendo a la base de datos cada vez
+			
+		//VERSIÓN 2 .- Accediendo al Mapa precargado con Todas las patlogías
+			
+			patoDTO = MapaPatologias.getPatologia (id);
+			
+		//FIN VERSIÓN 2 .- Accediendo al Mapa precargado con Todas las patlogías
 			
 		return patoDTO;
 	}

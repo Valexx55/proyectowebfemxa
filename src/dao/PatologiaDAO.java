@@ -5,11 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import dto.PatologiaDTO;
 import dto.SintomaDTO;
 
 public class PatologiaDAO {
+	
+	
+	
+	
 	
 	public static PatologiaDTO compomonerObjeto (ResultSet rs) throws Exception
 	{
@@ -29,6 +37,59 @@ public class PatologiaDAO {
 	}
 	
 	
+	private List<Integer> obtenerIDsPatologias () 
+	{
+		List<Integer> listaids = new ArrayList<Integer>();
+		
+		Pool pool = null;
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			
+			pool = Pool.getInstance();
+			con = pool.getConnection();
+			st = con.createStatement();
+			rs = st.executeQuery(Consultas.CONSULTA_ID_PATOLOGIAS);
+			
+				while (rs.next())
+				{
+					listaids.add(rs.getInt(1));
+				}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			
+			pool.liberarRecursos(con, st, rs);
+			
+		}
+			
+		
+		return listaids;
+		
+	}
+	
+	public Map<Integer, PatologiaDTO> obtenerListaPalogias ()
+	{
+		Map<Integer, PatologiaDTO> mapa_patologia = new HashMap<Integer, PatologiaDTO>();
+		PatologiaDTO pdto_aux = null;
+		
+			 List<Integer> lids = obtenerIDsPatologias ();
+			 
+			 for (Integer i : lids)
+			 {
+				pdto_aux = buscarPorId(i);
+				mapa_patologia.put(i, pdto_aux);
+			
+			 }
+			
+		
+		return mapa_patologia;
+	}
 	public PatologiaDTO buscarPorId (int id)
 	{
 		PatologiaDTO patologiaDTO = null;
