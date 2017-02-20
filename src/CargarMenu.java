@@ -1,26 +1,28 @@
-package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.PatologiaDTO;
-import servicios.PatologiaService;
 
 /**
- * Servlet implementation class BuscarPatologia
+ * Servlet implementation class CargarMenu
  */
-@WebServlet("/BuscarPatologia")
-public class BuscarPatologia extends HttpServlet {
+@WebServlet("/CargarMenu")
+public class CargarMenu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BuscarPatologia() {
+    public CargarMenu() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +32,15 @@ public class BuscarPatologia extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PatologiaService ps = new PatologiaService();
+		PrintWriter out = response.getWriter();
+		System.out.println(request.getParameter("num"));
 		
-		String str_id = request.getParameter("id");
-		int id = Integer.parseInt(str_id);
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
 		
-		long tinicial = System.currentTimeMillis();
-		PatologiaDTO patoDto = ps.buscarPatologiaPorId(id);
-		long tfinal = System.currentTimeMillis();
-		long ttotal = tfinal-tinicial;
-		System.out.println("Tardó = " + ttotal +" ms");
+		out = response.getWriter();
+		out.println("MENSAJE INICIAL");
 		
-		request.setAttribute("patologia", patoDto);
-		request.getRequestDispatcher(".//html//catarata.jsp").forward(request, response);
 	}
 
 	/**
@@ -50,7 +48,6 @@ public class BuscarPatologia extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

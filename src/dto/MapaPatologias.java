@@ -6,7 +6,8 @@ import dto.PatologiaDTO;
 
 public class MapaPatologias {
 	
-	private static Map<Integer, PatologiaDTO> mapapatologia;
+	private static Map<Integer, PatologiaDTO> 
+	mapapatologia;
 
 	public Map<Integer, PatologiaDTO> getMapapatologia() {
 		return mapapatologia;

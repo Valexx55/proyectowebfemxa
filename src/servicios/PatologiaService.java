@@ -13,10 +13,10 @@ public class PatologiaService {
 		PatologiaDTO patoDTO = null;
 		
 		//VERSIÓN 1 .- Accediendo a la base de datos cada vez
-			/*PatologiaDAO pdao = new PatologiaDAO();
-			patoDTO = pdao.buscarPorId(id);
+			//PatologiaDAO pdao = new PatologiaDAO();
+			//patoDTO = pdao.buscarPorId(id);
 		
-			System.out.println(patoDTO.toString());*/
+			//System.out.println(patoDTO.toString());
 		//FIN VERSIÓN 1 .- Accediendo a la base de datos cada vez
 			
 		//VERSIÓN 2 .- Accediendo al Mapa precargado con Todas las patlogías
