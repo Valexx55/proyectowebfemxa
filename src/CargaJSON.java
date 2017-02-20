@@ -14,6 +14,7 @@ import com.google.gson.Gson;
  * Servlet implementation class CargaJSON
  */
 
+@WebServlet("/CargaJSON")
 public class CargaJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
