@@ -34,7 +34,7 @@ public class CargaJSON extends HttpServlet {
 		Persona persona = new Persona("Jose", 23);
 		Gson gson = new Gson();
 		String mensajeJson = gson.toJson(persona);
-		
+		System.out.println("PERSONA = " + mensajeJson);
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");

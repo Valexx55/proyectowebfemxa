@@ -16,6 +16,8 @@ function rellenaCaja()
 
 function procesarEventos()
 {
+
+  alert ("VALOR READYSTATE " + xmlHttp.readyState);
    
   if(xmlHttp.readyState==4) //ya hemos recibido respuesta del servidor
   {
@@ -48,7 +50,7 @@ function procesarEventos()
 <table>
 	<tr><td><input type="text" id="nombre" ></td></tr>
 	<tr><td><input type="text" id="edad" ></td></tr>
-	<tr><td><input type="submit" value="Rellena" onclick="rellenaCaja();"></td></tr>
+	<tr><td><input type="submit" value="Rellena"  onclick="rellenaCaja();"></td></tr>
 </table>
  
 
