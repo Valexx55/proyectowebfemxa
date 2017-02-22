@@ -4,6 +4,7 @@ public class SintomaDTO {
 	
 	private int id;
 	private String descripcion;
+	
 	public int getId() {
 		return id;
 	}
@@ -22,6 +23,12 @@ public class SintomaDTO {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return id + " " + descripcion;
 	}
 	
 	
