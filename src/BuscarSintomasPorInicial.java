@@ -39,20 +39,21 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String inicial = request.getParameter("intro");
 		SintomaService ss = new SintomaService();
-		
 		List<SintomaDTO> lista_sintomas = null;
-		System.out.println(request.getParameter("intro"));
-		lista_sintomas = ss.buscarSintomasPorInicial("V");
-		
+		lista_sintomas = ss.buscarSintomasPorInicial(inicial);
+		/*
 		for (SintomaDTO sintoma : lista_sintomas) {
 			System.out.println(sintoma);
 		}
-		
+		*/
 		Gson gson = new Gson();
 		Type tipoListaSintomas = new TypeToken<List<SintomaDTO>>(){}.getType();
 		String s = gson.toJson(lista_sintomas, tipoListaSintomas);
-		System.out.println(s);
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(s);
 		
 		
 		
